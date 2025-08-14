@@ -305,10 +305,6 @@
   (setq-local treesit-language-at-point-function
               #'templ-ts--treesit-language-at-point)
 
-  (setq-local treesit-range-settings
-              (apply #'treesit-range-rules
-                     templ-ts--range-rules))
-
   ;; Indent.
   (setq-local indent-tabs-mode t
               treesit-simple-indent-rules templ-ts--indent-rules)
