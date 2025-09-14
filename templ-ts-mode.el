@@ -58,8 +58,8 @@
 (defcustom templ-ts-mode-grammar-install 'prompt
   "Automatic installation of the tree-sitter language grammar library."
   :type '(choice (const :tag "Install automatically" auto)
-                 (const :tag "Prompt to install" prompt)
-                 (const :tag "Do not install" nil))
+          (const :tag "Prompt to install" prompt)
+          (const :tag "Do not install" nil))
   :group 'templ-ts
   :version "0.1")
 
@@ -304,6 +304,13 @@
   ;; Child language handling.
   (setq-local treesit-language-at-point-function
               #'templ-ts--treesit-language-at-point)
+
+  (setq-local treesit-range-settings
+              (treesit-range-rules
+               :embed 'javascript
+               :host 'templ
+               :offset '(1 . -1)
+               '((script_element (script_element_text) @javascript))))
 
   ;; Indent.
   (setq-local indent-tabs-mode t
